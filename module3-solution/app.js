@@ -13,13 +13,13 @@
         ctrl.getMatchedMenuItems = function(searchTerm) {
             ctrl.error = false;
             ctrl.found = [];
-            if (searchTerm == undefined) {
+            if (!searchTerm) {
                 ctrl.error = true;
                 return;
             }
             MenuSearchService.getMatchedMenuItems(searchTerm)
                 .then(function(result) {
-                    if (result.length == 0) {
+                    if (!result || result.length == 0) {
                         ctrl.error = true;
                         return;
                     }
